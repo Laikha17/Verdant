@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order History - Verdant</title>
+    <title>Account Dashboard | Verdant Glass</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav id="navbar" class="navbar"></nav>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">🪴 Verdant</a>
+        <div class="nav-links">Loading...</div>
+    </nav>
     <div class="container">
-        <h2 style="color: var(--primary); margin-bottom: 2rem;">Your Order History</h2>
-        <div id="orders-container">
-            <p style="color: var(--text-light);">Loading orders...</p>
+        <div id="account-container" style="background:var(--glass-bg); backdrop-filter:blur(15px); border:1px solid var(--glass-border); border-radius:16px; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+            <div style="text-align:center;"><p>Authenticating...</p></div>
         </div>
     </div>
-    
-    <script type="module" src="js/account.js"></script>
+    <script type="module" src="js/app.js" defer></script>
 </body>
 </html>

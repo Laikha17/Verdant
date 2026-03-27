@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Verdant Nursery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: var(--surface);">
+    <nav id="navbar" class="navbar"></nav>
+    
+    <div class="container" style="max-width: 1000px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1 style="color: var(--primary);">Inventory Management</h1>
+            <a href="add-plant.html" class="btn-primary" style="width: auto;">+ Add New Plant</a>
+        </div>
+        
+        <div style="overflow-x: auto;">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock Left</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-tbody">
+                    <tr><td colspan="6" style="text-align: center;">Loading inventory...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script type="module" src="js/app.js" defer></script>
+</body>
+</html>

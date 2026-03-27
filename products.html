@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Verdant Glass</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">🪴 Verdant</a>
+        <div class="nav-links">Loading...</div>
+    </nav>
+    <div class="container">
+        <h1 class="section-title text-center" style="margin-bottom: 2rem;">Our Plant Collection</h1>
+
+        <!-- Categorized Gallery Filter Bar -->
+        <div class="filters" id="filters" style="display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center;">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="indoor">Indoor</button>
+            <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+            <button class="filter-btn" data-filter="low-maintenance">Low Maintenance</button>
+        </div>
+        
+        <div id="plants-grid" class="product-grid">
+            <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+        </div>
+    </div>
+    <script type="module" src="js/app.js" defer></script>
+</body>
+</html>
