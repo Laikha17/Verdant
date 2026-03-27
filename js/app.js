@@ -3,12 +3,12 @@ import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWith
 import { getFirestore, collection, doc, setDoc, getDoc, getDocs, updateDoc, increment, addDoc, deleteDoc, query, limit, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDw3v36LdOJwGMJaz5S4XcWnNU0fWtYDKs",
-  authDomain: "verdant-d9d31.firebaseapp.com",
-  projectId: "verdant-d9d31",
-  storageBucket: "verdant-d9d31.firebasestorage.app",
-  messagingSenderId: "436266438871",
-  appId: "1:436266438871:web:3e021d2337c030b28de092"
+  apiKey: "AIzaSyBHS4YTi2WyfQ2duh1wl0VBfTCof3SlOLI",
+  authDomain: "cse24pa1a0502-verdant.firebaseapp.com",
+  projectId: "cse24pa1a0502-verdant",
+  storageBucket: "cse24pa1a0502-verdant.firebasestorage.app",
+  messagingSenderId: "333644553013",
+  appId: "1:333644553013:web:cfb1506e1111662ed70a7c"
 };
 
 export const app = initializeApp(firebaseConfig);
