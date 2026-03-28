@@ -177,28 +177,22 @@ async function initIndex() {
     try {
         const snap = await getDocs(query(collection(db, 'plants'), limit(50)));
         grid.innerHTML = '';
-        if (snap.empty) { grid.innerHTML = `<p style="grid-column:1/-1;">No plants available.</p>`; return; }
+        if (snap.empty) { /* fallthrough to empty guard */ }
         
         let allP = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        const approvedIds = ['1545241047-6083a3684587', '1596547514121-653775f0a38b', '1512428559086-560e5dd14d1f', '1509423350119-c6374092d634', '1453904300235-df5c00d4265b'];
-        
-        let filteredP = allP.filter(p => {
-            const iSrc = p.image || p.imageUrl || '';
-            return approvedIds.some(aid => iSrc.includes(aid));
-        });
 
-        if (filteredP.length === 0) {
+        if (allP.length === 0) {
             grid.innerHTML = `
                 <div style="grid-column:1/-1; text-align:center; padding: 2rem;">
-                    <p style="margin-bottom: 2rem; color:var(--text-light); font-size: 1.1rem;">No Verified High-Quality Plants Found.</p>
-                    <button id="emergency-seed-home" class="btn-primary" style="padding: 1rem 3rem;">🚀 One-Click: Reseed Aesthetic Plants</button>
+                    <p style="margin-bottom: 2rem; color:var(--text-light); font-size: 1.1rem;">No Plants Found in Database.</p>
+                    <button id="emergency-seed-home" class="btn-primary" style="padding: 1rem 3rem;">🚀 Initialize Store with Plants</button>
                 </div>
             `;
             document.getElementById('emergency-seed-home').onclick = () => window.seedData(true);
             return;
         }
 
-        allP = filteredP.slice(0, 3);
+        allP = allP.slice(0, 3);
 
         allP.forEach(p => {
             if(!p.name || !p.price) return;
@@ -220,29 +214,23 @@ async function initProducts() {
     const grid = document.getElementById('plants-grid'); if(!grid) return;
     try {
         const snap = await getDocs(query(collection(db, 'plants')));
-        if(snap.empty) { grid.innerHTML = '<p style="text-align:center;grid-column:1/-1;">No plants available.</p>'; return; }
+        if(snap.empty) { /* fallthrough to empty guard */ }
         
         let allP = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const approvedIds = ['1545241047-6083a3684587', '1596547514121-653775f0a38b', '1512428559086-560e5dd14d1f', '1509423350119-c6374092d634', '1453904300235-df5c00d4265b'];
-        
-        let filteredP = allP.filter(p => {
-            const iSrc = p.image || p.imageUrl || '';
-            return approvedIds.some(aid => iSrc.includes(aid));
-        });
 
-        if (filteredP.length === 0) {
+        if (allP.length === 0) {
             grid.innerHTML = `
                 <div style="grid-column:1/-1; text-align:center; padding: 4rem 1rem;">
-                    <h2>Database Unverified (Contains Cars or Legacy Elements)</h2>
-                    <p style="margin: 1rem 0 2rem; color:var(--text-light); font-size: 1.1rem;">The front-end filter has aggressively blocked unverified elements from rendering.<br>Click below to completely overwrite the database with 45 perfect, 100% verified plants globally.</p>
-                    <button id="emergency-seed-gallery" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">🚀 Reseed Verified 45 UI</button>
+                    <h2>Store is Empty</h2>
+                    <p style="margin: 1rem 0 2rem; color:var(--text-light); font-size: 1.1rem;">No plants are currently listed in the database.<br>Click below to initialize the store with starter plants.</p>
+                    <button id="emergency-seed-gallery" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">🚀 Initialize Store</button>
                 </div>
             `;
             document.getElementById('emergency-seed-gallery').onclick = () => window.seedData(true);
             return;
         }
 
-        allP = filteredP;
+        allP = allP;
 
         function renderCards(fil) {
             grid.innerHTML = '';
@@ -431,7 +419,6 @@ function initAddPlant() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initAuthUI();
-    window.cleanupImages();
     const p = window.location.pathname;
     if (p.endsWith('/') || p.endsWith('index.html')) initIndex();
     else if (p.endsWith('products.html')) initProducts();
